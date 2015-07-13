@@ -8,7 +8,7 @@ app.controller('MainCtrl', [
   function($scope) {
     $scope.test = 'Hello World!';
     $scope.posts = [
-      {title: 'post 1', upvotes: 5},
+      {title: 'post 1', upvotes: 5, link: 'http://google.com'},
       {title: 'post 2', upvotes: 42},
       {title: 'post 3', upvotes: 534},
       {title: 'post 4', upvotes: 2},
