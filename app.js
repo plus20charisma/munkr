@@ -1,10 +1,12 @@
 /**
  * Created by plus on 7/12/15.
+ * TODO Injecting the Service
  */
 var app = angular.module('munkkit', []);
 
 app.controller('MainCtrl', [
   '$scope',
+  'posts',
   function($scope) {
     $scope.test = 'Hello World!';
     $scope.posts = [
@@ -29,3 +31,10 @@ app.controller('MainCtrl', [
     };
   }
 ]);
+
+app.factory('posts', [function(){
+  var o = {
+    posts: []
+  };
+  return o;
+}])
