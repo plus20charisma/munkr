@@ -1,4 +1,17 @@
-var app = angular.module('munkr', []);
+var app = angular.module('munkr', ['ui.router']);
+
+app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider){
+
+  $stateProvider
+      .state('home', {
+        url: 'home',
+        templateUrl: '/home.html',
+        controller: 'MainCtrl'
+      });
+
+  $urlRouterProvider.otherwise('home');
+
+}]);
 
 app.controller('MainCtrl', [
 
@@ -26,7 +39,6 @@ app.controller('MainCtrl', [
 
   }
 ]);
-
 
 app.factory('posts', [function(){
   var p = {
