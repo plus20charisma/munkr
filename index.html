@@ -10,51 +10,17 @@
     <script src="https://cdn.jsdelivr.net/angular.ui-router/0.2.15/angular-ui-router.min.js"></script>
     <script src="app.js"></script>
 </head>
-<body ng-app="munkr" ng-controller="MainCtrl">
+<body ng-app="munkr">
 
 <div class="navbar navbar-default navbar-static-top">
     <div class="navbar-header">
          <h1><a class="navbar-brand" href="#"><img src="img/logo.png" class="logo"> munkr.</a></h1>
     </div>
 </div>
+<!--nav-->
 
-<div class="container">
-    <div class="row">
-        <div class="col-md-11 col-md-offset-1 col-xs-6 col-xs-offset-3">
-            <div ng-repeat="post in posts | orderBy: '-upvotes'">
-            <span class="glyphicon glyphicon-thumbs-up" ng-click="incrementUpvotes(post)"></span>
-            <span class="user-post-score">{{post.upvotes}}</span>
-                <span class="user-post">
-                    <a ng-show="post.link" href="{{post.link}}">
-                        {{post.title}}
-                    </a>
-                    <span ng-hide="post.link">
-                        {{post.title}}
-                    </span>
-                </span>
-            </div>
+<ui-view></ui-view>
 
-            <form ng-submit="addPost()" class="top-pad">
-                <h3>Add New Post</h3>
-                <div class="form-group">
-                <input type="text" placeholder="Title" ng-model="title" class="form-control">
-                </div>
-                <div class="form-group">
-                <input type="text" placeholder="Link" ng-model="link" class="form-control">
-                </div>
-                <button type="submit" class="btn btn-primary">Post</button>
-            </form>
-        </div>
-    </div>
-</div>
-
-<script type="text/ng-template" id="/home.html">
-    <div class="page-header">
-        <h1>munkr.</h1>
-    </div>
-
-    <!--rest of template-->
-</script>
 
 </body>
 </html>
