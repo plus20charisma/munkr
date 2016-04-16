@@ -10,8 +10,8 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
       })
 
       .state('posts', {
-        url: '/posts/{id}',
-        templateUrl: '/templates/posts.html',
+        url: '/post/:id',
+        templateUrl: '/templates/post.html',
         controller: 'PostsCtrl'
       });
 
@@ -55,17 +55,33 @@ app.controller('PostsCtrl', [
   '$stateParams',
   'posts',
   function($scope, $stateParams, posts){
+
     $scope.post = posts.posts[$stateParams.id];
+
+    $scope.incrementUpvotes = function(comment) {
+      comment.upvotes += 1;
+    };
+
+    $scope.addComment = function(){
+      if($scope.body === '') {return ;}
+      $scope.post.comments.push({
+        body: $scope.body,
+        author: 'user',
+        upvotes: 0
+      });
+      $scope.body = '';
+    };
+
 }]);
 
 app.factory('posts', [function(){
   var p = {
     posts: [
-      {title: 'Google', upvotes: 5, link: 'http://google.com'},
-      {title: 'Facebook', upvotes: 42, link: 'http://facebook.com'},
-      {title: 'Tumblr', upvotes: 534, link: 'http://tumblr.com'},
-      {title: 'Quora', upvotes: 2, link: 'http://quora.com'},
-      {title: 'Instagram', upvotes: 66, link: 'http://instagram.com'}
+      {title: 'Google', upvotes: 0, link: 'http://google.com', comments: []},
+      {title: 'Facebook', upvotes: 0, link: 'http://facebook.com', comments: []},
+      {title: 'Tumblr', upvotes:0, link: 'http://tumblr.com', comments: []},
+      {title: 'Quora', upvotes: 0, link: 'http://quora.com', comments: []},
+      {title: 'Instagram', upvotes: 0, link: 'http://instagram.com', comments: []}
     ]
   };
   return p;
