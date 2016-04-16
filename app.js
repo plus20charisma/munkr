@@ -11,7 +11,7 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
 
       .state('posts', {
         url: '/posts/{id}',
-        templateUrl: '/posts.html',
+        templateUrl: '/templates/posts.html',
         controller: 'PostsCtrl'
       });
 
@@ -33,7 +33,11 @@ app.controller('MainCtrl', [
       $scope.posts.push({
         title: $scope.title,
         link: $scope.link,
-        upvotes: 0
+        upvotes: 0,
+        comments: [
+          {author: 'Joe', body: 'Cool post!', upvotes: 0},
+          {author: 'Bob', body: 'Great idea but everything is wrong!', upvotes: 0}
+        ]
       });
       $scope.link = '';
       $scope.title = '';
@@ -51,17 +55,17 @@ app.controller('PostsCtrl', [
   '$stateParams',
   'posts',
   function($scope, $stateParams, posts){
-
+    $scope.post = posts.posts[$stateParams.id];
 }]);
 
 app.factory('posts', [function(){
   var p = {
     posts: [
-      {title: 'post 1', upvotes: 5, link: 'http://google.com'},
-      {title: 'post 2', upvotes: 42},
-      {title: 'post 3', upvotes: 534},
-      {title: 'post 4', upvotes: 2},
-      {title: 'post 5', upvotes: 66}
+      {title: 'Google', upvotes: 5, link: 'http://google.com'},
+      {title: 'Facebook', upvotes: 42, link: 'http://facebook.com'},
+      {title: 'Tumblr', upvotes: 534, link: 'http://tumblr.com'},
+      {title: 'Quora', upvotes: 2, link: 'http://quora.com'},
+      {title: 'Instagram', upvotes: 66, link: 'http://instagram.com'}
     ]
   };
   return p;
