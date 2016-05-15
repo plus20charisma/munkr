@@ -77,11 +77,11 @@ app.controller('PostsCtrl', [
 app.factory('posts', [function(){
   var p = {
     posts: [
-      {title: 'Google', upvotes: 0, link: 'http://google.com', comments: []},
-      {title: 'Facebook', upvotes: 0, link: 'http://facebook.com', comments: []},
-      {title: 'Tumblr', upvotes:0, link: 'http://tumblr.com', comments: []},
-      {title: 'Quora', upvotes: 0, link: 'http://quora.com', comments: []},
-      {title: 'Instagram', upvotes: 0, link: 'http://instagram.com', comments: []}
+      {title: 'Google', upvotes: 4, link: 'http://google.com', comments: [], id: 1},
+      {title: 'Facebook', upvotes: 3, link: 'http://facebook.com', comments: [], id: 2},
+      {title: 'Tumblr', upvotes:2, link: 'http://tumblr.com', comments: [], id: 3},
+      {title: 'Quora', upvotes: 1, link: 'http://quora.com', comments: [], id: 4},
+      {title: 'Instagram', upvotes: 6, link: 'http://instagram.com', comments: [], id: 5}
     ]
   };
   return p;
